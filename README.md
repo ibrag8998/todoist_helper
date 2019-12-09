@@ -9,7 +9,7 @@ This project can help you very quickly add tasks to your todoist account!
 - Go to your Todoist account > Settings > Integrations > API Token and copy it.
 
 - Since you are in the directory, that contains this file, run this command:
-```echo "API_TOKEN = 'PASTE_YOUR_TOKEN_HERE'" > todoist_helper/config.py```.
+```echo "API_TOKEN = 'PASTE_YOUR_TOKEN_HERE'" > todoist_helper/api_token.py```.
 
 > Install dependencies
 
