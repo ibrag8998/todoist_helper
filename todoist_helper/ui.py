@@ -7,13 +7,14 @@ class UI:
     def __init__(self):
         self.root = tk.Tk()
         self.center_root()
-        self.root.bind('<Control-Key-w>', lambda *args: self.close(*args, cancel=True))
-        self.root.bind('<Return>', lambda *args: self.close(*args, cancel=False))
+        self.root.bind('<Control-Key-w>', self.close)
+        self.root.bind('<Return>', self.save)
 
         self.mainframe = ttk.Frame(self.root, padding='20 20 20 20')
         self.mainframe.grid(row=0, column=0)
 
         self.task = tk.StringVar()
+        self.close_window = False
 
     def quick_add(self):
         legend = ttk.Label(self.mainframe, text='Add Task')
@@ -23,7 +24,7 @@ class UI:
         task_entry.grid(row=1, column=0)
         task_entry.focus()
 
-        btn = ttk.Button(self.mainframe, text='Add Task', command=lambda *args: self.close(*args, cancel=False))
+        btn = ttk.Button(self.mainframe, text='Add Task', command=self.save)
         btn.grid(row=2, column=0)
 
         self.grid_configure()
@@ -37,9 +38,13 @@ class UI:
         pos_y = int(self.root.winfo_screenheight()/2 - self.root.winfo_reqheight()/2)
         self.root.geometry("+{}+{}".format(pos_x, pos_y))
 
-    def close(self, *args, cancel=False):
-        if cancel:
-            self.task.set('')
+    def close(self, *args):
+        self.close_window = True
+        self.task.set('')
+        self.root.destroy()
+    
+    def save(self, *args):
+        self.close_window = False
         self.root.destroy()
 
     def mainloop(self):

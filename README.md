@@ -30,8 +30,8 @@ Change ```pip``` to ```pip3``` if you need.
 
 > Built-in shortcuts
 
-- ```Ctrl-W``` . . . Close window without save
-- ```Enter``` . . . Close window with save
+- ```Ctrl-W``` . . . Close window
+- ```Enter``` . . . Save task
 
 > Setup finished!
 

@@ -5,10 +5,18 @@ from todoist_helper.ui import UI
 from todoist_helper.todoist_push import push
 
 
-ui = UI()
-ui.quick_add()
-ui.mainloop()
+def save(task):
+    if task:
+        push(task)
 
-task = ui.task.get()
-if task:
-    push(task)
+
+while True:
+    ui = UI()
+    ui.quick_add()
+    ui.mainloop()
+
+    save(ui.task.get())
+    ui.task.set('')
+    
+    if ui.close_window:
+        break
