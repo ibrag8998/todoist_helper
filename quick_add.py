@@ -9,4 +9,6 @@ ui = UI()
 ui.quick_add()
 ui.mainloop()
 
-push(ui.task.get())
+task = ui.task.get()
+if task:
+    push(task)
