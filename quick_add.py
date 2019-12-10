@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-from time import strftime
-
 from todoist_helper.ui import UI
 from todoist_helper.todoist_push import push
+from todoist_helper import config as cf
 
 
 def save(task):
-    if task:
-        push(task)
+    push(task)
 
 
 while True:
@@ -15,8 +13,9 @@ while True:
     ui.quick_add()
     ui.mainloop()
 
-    save(ui.task.get())
-    ui.task.set('')
+    if ui.task.get():
+        save(ui.task.get())
+        ui.task.set('')
     
     if ui.close_window:
         break
